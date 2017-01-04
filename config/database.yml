@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  template: template0
+  pool: 5
+
+development:
+  <<: *default
+  database: dive23_6_development
+
+test:
+  <<: *default
+  database: dive23_6_test
+
+production:
+  <<: *default
+  database: dive23_6_production
+  username: dive23_6
+  password: <%= ENV['DIVE23_6_DATABASE_PASSWORD'] %>
