@@ -18,6 +18,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem "font-awesome-rails"
 gem 'rb-readline'
@@ -39,4 +40,5 @@ group :development do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'pry-doc'
+  gem 'letter_opener_web'
 end
