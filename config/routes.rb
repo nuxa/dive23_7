@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
-  get 'users/index'
-
-  get 'users/show'
+  
+  resources :users, only: [:index, :show] do
+    resources :favorites, only: [:index]
+  end
 
   devise_for :users, controllers: {
       registrations: 'users/registrations',
       omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  resources :users, only: [:index, :show]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
