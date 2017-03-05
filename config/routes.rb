@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
-  get 'ranks' => 'ranks#index'
+
   root 'questions#index'
+  get 'ranks' => 'ranks#index'
 
   devise_for :users, controllers: {
       registrations: 'users/registrations',
       omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  resources :questions
+  resources :questions do
+    resources :answers
+  end
+
   resources :users, only: [:index, :show] do
     resources :favorites, only: [:index]
   end
