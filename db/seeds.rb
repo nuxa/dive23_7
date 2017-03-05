@@ -18,3 +18,15 @@
       uid: n
   )
 end
+
+#
+100.times do |n|
+  user_id = Faker::Number.between(1, 50)
+  title = Faker::Lorem.sentence
+  content = Faker::Lorem.paragraphs
+  Question.create!(
+      user_id: user_id,
+      title: title,
+      content: content
+  )
+end
