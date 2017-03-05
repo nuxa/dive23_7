@@ -18,3 +18,12 @@
       uid: n
   )
 end
+
+100.times do |n|
+  user_id = Faker::Number.between(1, 50)
+  question_id = Faker::Number.between(1, 100)
+  Favorite.create!(
+      user_id: user_id,
+      question_id: question_id
+  )
+end
