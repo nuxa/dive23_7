@@ -23,7 +23,7 @@ end
   user_id = Faker::Number.between(1, 50)
   title_length = Faker::Number.between(10, 50)
   title = Faker::Lorem.characters(title_length)
-  content = Faker::Lorem.paragraphs
+  content = Faker::Lorem.paragraphs.join
   Question.create!(
       user_id: user_id,
       title: title,
