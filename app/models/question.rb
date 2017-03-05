@@ -2,7 +2,7 @@ class Question < ActiveRecord::Base
   belongs_to :user
   belongs_to :tag
   has_many :favorite
-  has_many :answer
+  has_many :answers
   has_many :points, class_name: 'Contribute'
   has_many :question_tag
 
