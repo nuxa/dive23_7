@@ -1,0 +1,12 @@
+<% if user_signed_in? %>
+    <%= form_for([question, answer], remote: true) do |f| %>
+        <%= f.error_messages! %>
+        <%= f.hidden_field :question_id %>
+        <div class="field">
+          <%= f.text_field :content, placeholder: "内容", class: "form-control" %>
+        </div>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+    <% end %>
+<% end %>
