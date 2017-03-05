@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root 'questions#index'
+  get 'ranks' => 'ranks#index'
 
   devise_for :users, controllers: {
       registrations: 'users/registrations',
