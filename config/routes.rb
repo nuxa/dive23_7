@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'ranks' => 'ranks#index'
   root 'questions#index'
 
   devise_for :users, controllers: {
