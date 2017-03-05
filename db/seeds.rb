@@ -19,7 +19,7 @@
   )
 end
 
-100.times do |n|
+200.times do |n|
   user_id = Faker::Number.between(1, 50)
   question_id = Faker::Number.between(1, 100)
   Favorite.create!(
