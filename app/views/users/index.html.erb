@@ -1,0 +1,13 @@
+<div class="container">
+  <h2>ユーザー</h2>
+  <% @users.each do |user| %>
+      <div class="container-child col-md-2 col-sm-4 col-xs-6 ">
+        <%= profile_img(user) %>
+        <p><%= link_to user.name, user_path(user) %></p>
+        <p><%= user.email %></p>
+        <% if user.id === current_user.id %>
+            <p><%= link_to '編集する', edit_user_registration_path %></p>
+        <% end %>
+      </div>
+  <% end %>
+</div>

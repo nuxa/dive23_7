@@ -4,8 +4,10 @@ one:
   user_id: 
   title: MyString
   content: MyText
+  point: 1
 
 two:
   user_id: 
   title: MyString
   content: MyText
+  point: 1

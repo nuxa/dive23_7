@@ -18,20 +18,27 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem "font-awesome-rails"
 gem 'rb-readline'
 
 group :development, :test do
+  gem 'annotate'
   gem 'byebug'
+  gem 'dotenv-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'spring'
+  gem "rspec-rails"
+  gem "factory_girl_rails"
+  gem 'faker'
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'pry-byebug'
   gem 'pry-rails'
-
   gem 'pry-doc'
-
-  gem 'spring'
+  gem 'letter_opener_web'
 end
