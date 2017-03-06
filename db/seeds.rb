@@ -19,14 +19,23 @@
   )
 end
 
-#
 100.times do |n|
   user_id = Faker::Number.between(1, 50)
-  title = Faker::Lorem.sentence
-  content = Faker::Lorem.paragraphs
+  title_length = Faker::Number.between(10, 50)
+  title = Faker::Lorem.characters(title_length)
+  content = Faker::Lorem.paragraphs.join
   Question.create!(
       user_id: user_id,
       title: title,
       content: content
+  )
+end
+
+200.times do |n|
+  user_id = Faker::Number.between(1, 50)
+  question_id = Faker::Number.between(1, 100)
+  Favorite.create!(
+      user_id: user_id,
+      question_id: question_id
   )
 end
