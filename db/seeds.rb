@@ -19,6 +19,16 @@
   )
 end
 
+# タグ
+tags = ["ruby", "java", "php", "python", "ruby-on-rails", "postgresql",
+        "mysql", "sql", "git", "github", "gem", "html", "javascript",
+        "jquery", "ajax", "css", "bootstrap", "json", "http"]
+for tag in tags do
+  Tag.create!(
+    name: tag
+  )
+end
+
 100.times do |n|
   user_id = Faker::Number.between(1, 50)
   title_length = Faker::Number.between(10, 50)
@@ -29,6 +39,16 @@ end
       title: title,
       content: content
   )
+  # Questionに紐づくタグを登録(1つのQuestionにつき最大5個)
+  tag_num = Faker::Number.between(1, 5)
+  # 1つのQuestionに対し同一のタグが紐づかないようにする
+  tag_idx_array = (0...tags.length).to_a.shuffle[0...tag_num]
+  for tag_idx in tag_idx_array do
+    QuestionTag.create!(
+      question_id: n+1,
+      tag_id: tag_idx+1
+    )
+  end
 end
 
 200.times do |n|
