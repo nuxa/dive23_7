@@ -1,4 +1,6 @@
 class AnswersController < ApplicationController
+  before_action :set_answer, only: [:destroy]
+
   def create
     # ログインユーザーに紐付けてインスタンス生成するためbuildメソッドを使用します。
     @answer = current_user.answers.build(answer_params)
@@ -18,7 +20,21 @@ class AnswersController < ApplicationController
     end
   end
 
+  def destroy
+    respond_to do |format|
+      if @answer.destroy
+        format.js { render :index }
+      else
+        format.html { redirect_to(questions_path,) }
+      end
+    end
+  end
+
   private
+    def set_answer
+      @answer = Answer.find(params[:id])
+    end
+
     def answer_params
       params.require(:answer).permit(:question_id, :content)
     end
