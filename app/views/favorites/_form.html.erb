@@ -1,0 +1,6 @@
+<%= form_for([@user, @favorite]) do |f| %>
+  <%= f.hidden_field :question_id, :value => @question.id %>
+  <div class="actions">
+    <%= image_submit_tag("star_off.png") %>
+  </div>
+<% end %>

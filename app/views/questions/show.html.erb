@@ -19,4 +19,19 @@
     <%= render partial: 'answers/index', locals: { answers: @answers, question: @question } %>
   </div>
   <%= render partial: 'answers/form', locals: { answer: @answer, question: @question } %>
+
+  <div id="favorite_area">
+  <% if user_signed_in? %>
+    <% if !@favorite.user_id %>
+       <%= render partial: 'favorites/form', locals: { favorite: @favorite, user: @user } %>
+       <p><%= @favorites.length-1 %></p>
+    <% else %>
+        <%= link_to image_tag("star_on.png"),  [@user, @favorite], :method => :delete  %>
+        <p><%= @favorites.length %></p>
+    <% end %>
+  <% else %>
+      <%= image_tag("star_off.png")  %>
+      <p><%= @favorites.length %></p>
+  <% end %>
+  </div>
 </div>

@@ -2,6 +2,6 @@
   <h2><%= @favorites.count %>件のお気に入り</h2>
 
   <% @favorites.each do |favorite| %>
-    <p><%= link_to favorite.question.title, "#" %>
+    <p><%= link_to favorite.question.title, question_path(favorite.question) %>
   <% end %>
 </div>
