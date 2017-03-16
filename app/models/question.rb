@@ -1,6 +1,6 @@
 class Question < ActiveRecord::Base
   belongs_to :user
-  has_many :favorite
+  has_many :favorites, dependent: :destroy
   has_many :answers
   has_many :points, class_name: 'Contribute'
   has_many :question_tag
