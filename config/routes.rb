@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :favorites
   end
 
+  resources :tag
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
