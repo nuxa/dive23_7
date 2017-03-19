@@ -1,7 +1,6 @@
 <div class="container">
-  <h2><%= @favorites.count %>件のお気に入り</h2>
-
-  <% @favorites.each do |favorite| %>
-    <p><%= link_to favorite.question.title, question_path(favorite.question) %>
-  <% end %>
+  <h2><%= @user.name %>のお気に入り</h2>
+  <div class="col-md-offset-2 col-md-8">
+    <%= render 'shared/question', {questions: @questions } %>
+  </div>
 </div>

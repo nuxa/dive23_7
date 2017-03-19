@@ -1,8 +1,6 @@
 <div class="container">
   <h2>ランキング</h2>
-
-  <% for num in 0...20 do %>
-  <p><%= @ranks[num][1] %>
-  <%= link_to Question.find(@ranks[num][0]).title, question_path(@ranks[num][0]) %></p>
-  <% end %>
+    <div class="col-md-offset-1 col-md-10">
+      <%= render 'shared/question', {questions: @questions, favorites: @favortes } %>
+    </div>
 </div>
