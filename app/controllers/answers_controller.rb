@@ -1,4 +1,6 @@
 class AnswersController < ApplicationController
+  before_action :set_answer, only: [:edit, :update]
+
   def create
     # ログインユーザーに紐付けてインスタンス生成するためbuildメソッドを使用します。
     @answer = current_user.answers.build(answer_params)
@@ -18,8 +20,24 @@ class AnswersController < ApplicationController
     end
   end
 
+  def edit
+    @question = @answer.question
+  end
+
+  def update
+    if @answer.update(answer_params)
+      redirect_to question_path(@answer.question), notice: 'コメントを更新しました！'
+    else
+      render action: 'edit'
+    end
+  end
+
   private
     def answer_params
       params.require(:answer).permit(:question_id, :content)
+    end
+
+    def set_answer
+      @answer = Answer.find(params[:id])
     end
 end
