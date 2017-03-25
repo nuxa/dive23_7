@@ -2,6 +2,10 @@ class FavoritesController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @favorites = @user.favorites
+    @questions = []
+    @favorites.each do |f|
+      @questions.push(f.question)
+    end
   end
 
   def create
