@@ -13,8 +13,10 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show] do
-    resources :favorites, only: [:index]
+    resources :favorites
   end
+
+  resources :tag
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

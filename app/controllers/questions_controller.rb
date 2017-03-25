@@ -12,6 +12,16 @@ class QuestionsController < ApplicationController
   def show
     @answer = @question.answers.build
     @answers = @question.answers
+
+    @favorites = @question.favorites
+
+    if user_signed_in?
+      @favorite = Favorite.find_by(user_id: current_user.id, question_id: @question.id)
+      if !@favorite
+        @favorite = @question.favorites.build
+      end
+      @user = current_user
+    end
   end
 
   # GET /questions/new

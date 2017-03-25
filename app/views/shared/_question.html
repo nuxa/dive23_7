@@ -1,0 +1,29 @@
+
+<table class="table">
+ <thead>
+   <tr>
+     <th>No</th>
+     <th>タイトル</th>
+     <th>質問者</th>
+     <% if params["controller"] == "ranks" %>
+     <th>お気に入り</th>
+     <% end %>
+     <th>回答数</th>
+     <th>更新日時</th>
+   </tr>
+ </thead>
+ <tbody>
+   <% questions.each_with_index do |q, i| %>
+     <tr>
+       <td><%= i+1 %></td>
+       <td class='td_title'><%= link_to q.title, question_path(q) %></td>
+       <td><%= link_to q.user.name, user_path(q.user) %></td>
+       <% if params["controller"] == "ranks" %>
+       <td><%= @ranks[i][1] %></td>
+       <% end %>
+       <td><%= q.answers.count %>
+       <td><%= q.updated_at.strftime('%m月%d日 %H:%M') %></td>
+     </tr>
+   <% end %>
+ </tbody>
+</table>

@@ -1,0 +1,8 @@
+<div class="container">
+  <h2>タグ</h2>
+  <div align="left" class="col-md-offset-2 col-md-8">
+  <% @tags.each do |tag| %>
+      <%= link_to tag.name, tag_path(tag), { :class => "btn btn-primary" }  %>
+  <% end %>
+</div>
+</div>
