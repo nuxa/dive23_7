@@ -25,12 +25,25 @@ fileQ.each_line do |line|
   user_id = Faker::Number.between(1, User.count)
   title = line
   content = Faker::Lorem.paragraphs.join
-  Question.create!(
+  q= Question.new(
       user_id: user_id,
       title: title,
       content: content
   )
+
+fileT = File.open('db/tag.txt')
+tagsArray = []
+fileT.each_line do |line|
+  tagsArray.push(line)
 end
+fileT.close
+
+  tag_num = Faker::Number.between(1, 5)
+  t_array = tagsArray.to_a.shuffle[0...tag_num]
+  q.tag_list = t_array.join(',')
+  q.save
+end
+
 fileQ.close
 
 # Favorite(1人のUserで最大15個のお気に入り)
