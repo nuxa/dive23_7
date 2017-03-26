@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :set_answer, only: [:destroy]
+  before_action :set_answer, only: [:edit, :update, :destroy]
 
   def create
     # ログインユーザーに紐付けてインスタンス生成するためbuildメソッドを使用します。
@@ -20,6 +20,18 @@ class AnswersController < ApplicationController
     end
   end
 
+  def edit
+    @question = @answer.question
+  end
+
+  def update
+    if @answer.update(answer_params)
+      redirect_to question_path(@answer.question), notice: 'コメントを更新しました！'
+    else
+      render action: 'edit'
+    end
+  end
+
   def destroy
     respond_to do |format|
       if @answer.destroy
@@ -37,5 +49,9 @@ class AnswersController < ApplicationController
 
     def answer_params
       params.require(:answer).permit(:question_id, :content)
+    end
+
+    def set_answer
+      @answer = Answer.find(params[:id])
     end
 end
