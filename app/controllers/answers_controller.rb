@@ -29,6 +29,8 @@ class AnswersController < ApplicationController
       redirect_to question_path(@answer.question), notice: 'コメントを更新しました！'
     else
       render action: 'edit'
+    end
+  end
 
   def destroy
     respond_to do |format|
