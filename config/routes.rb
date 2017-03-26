@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'tags/index'
+
   root 'questions#index'
   get 'ranks' => 'ranks#index'
 

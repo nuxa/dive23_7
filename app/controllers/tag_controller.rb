@@ -1,11 +1,9 @@
 class TagController < ApplicationController
   def index
-    @tags = Tag.all
+    @tags = []
+    tags = Question.tags_on(:tags);
+    for tag in tags do
+      @tags.push(tag.name)
+    end
   end
-
-  def show
-   @tag = Tag.find(params[:id])
-   @questions = @tag.questions
-  end
-
 end

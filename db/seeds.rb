@@ -19,41 +19,32 @@
   )
 end
 
-# Tag
-fileT = File.open('db/tag.txt')
-fileT.each_line do |line|
-  Tag.create!(
-    name: line
-  )
-end
-fileT.close
-
 # Question
 fileQ = File.open('db/questions.txt')
 fileQ.each_line do |line|
   user_id = Faker::Number.between(1, User.count)
   title = line
   content = Faker::Lorem.paragraphs.join
-  Question.create!(
+  q= Question.new(
       user_id: user_id,
       title: title,
       content: content
   )
-end
-fileQ.close
 
-# QuestionTag (1つのQuestionにつき最大5個)
-(Question.count).times do |n|
-  tag_num = Faker::Number.between(1, 5)
-  # 1つのQuestionに対し同一のタグが紐づかないようにする
-  tag_idx_array = (1..Tag.count).to_a.shuffle[0...tag_num]
-  for tag_idx in tag_idx_array do
-    QuestionTag.create!(
-      question_id: n + 1,
-      tag_id: tag_idx
-    )
-  end
+fileT = File.open('db/tag.txt')
+tagsArray = []
+fileT.each_line do |line|
+  tagsArray.push(line)
 end
+fileT.close
+
+  tag_num = Faker::Number.between(1, 5)
+  t_array = tagsArray.to_a.shuffle[0...tag_num]
+  q.tag_list = t_array.join(',')
+  q.save
+end
+
+fileQ.close
 
 # Favorite(1人のUserで最大15個のお気に入り)
 (User.count).times do |n|

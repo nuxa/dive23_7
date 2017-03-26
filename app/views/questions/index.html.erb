@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Questions</h1>
-
+<% if @tag %>
+<span class="btn btn-primary"><%= @tag %></span>
+<% end %>
 <table>
   <thead>
     <tr>

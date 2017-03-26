@@ -20,6 +20,8 @@
   </div>
   <%= render partial: 'answers/form', locals: { answer: @answer, question: @question } %>
 
+  <%= render 'questions/tag_list', tag_list: @question.tag_list %></td>
+
   <div id="favorite_area">
   <% if user_signed_in? %>
     <% if !@favorite.user_id %>

@@ -2,8 +2,9 @@
 <html>
 <head>
   <title>Dive23/7</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= include_gon(:init => true) %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -42,7 +43,7 @@
         <h1 class="page-title pull-left">diver stack <b>overflow</b></h1>
         <ul class="nav nav-pills pull-right">
           <li role="presentation" class="active"><a href="#">質問</a></li>
-          <li role="presentation"><a href="#">タグ</a></li>
+          <li role="presentation"><%= link_to 'タグ', tag_index_path %></li>
           <li role="presentation"><a href="#">ユーザー</a></li>
           <li role="presentation"><a href="#">質問する</a></li>
         </ul>
@@ -50,7 +51,6 @@
     </div>
   </div>
 </header>
-
 <%= yield %>
 
 <footer>

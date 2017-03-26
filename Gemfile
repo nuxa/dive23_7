@@ -7,7 +7,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
-gem 'turbolinks'
+# gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -22,6 +22,9 @@ gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem "font-awesome-rails"
 gem 'rb-readline'
+gem 'acts-as-taggable-on', '~> 3.4'
+gem 'jquery-ui-rails'
+gem 'gon'
 
 group :development, :test do
   gem 'annotate'
