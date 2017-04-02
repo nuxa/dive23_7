@@ -46,7 +46,7 @@ end
 
 fileQ.close
 
-# Favorite(1人のUserで最大15個のお気に入り)
+# Favorite(1人のUserあたり最大15件のお気に入り)
 (User.count).times do |n|
   favorite_num = Faker::Number.between(0, 15)
   # 1つのUserに対し同一のQuestionが紐づかないようにする
@@ -55,6 +55,24 @@ fileQ.close
      Favorite.create!(
        user_id: n + 1,
        question_id: q_idx
+     )
+  end
+  # 質問に対する貢献度(1人Userあたり最大8件)
+  q_contribute_num = Faker::Number.between(0, 8)
+  q_idx_array = (1..Question.count).to_a.shuffle[0...q_contribute_num]
+  for q_idx in q_idx_array do
+     Contribute.create!(
+       user_id: n + 1,
+       point_q: q_idx
+     )
+  end
+  # 回答に対する貢献度(1人Userあたり最大8件)
+  a_contribute_num = Faker::Number.between(0, 8)
+  a_idx_array = (1..Answer.count).to_a.shuffle[0...a_contribute_num]
+  for a_idx in a_idx_array do
+     Contribute.create!(
+       user_id: n + 1,
+       point_a: a_idx
      )
   end
 end
