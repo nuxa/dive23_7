@@ -5,6 +5,8 @@
     <p><%= @user.name %></p>
     <p><%= @user.profile %></p>
     <p><%= @user.email %></p>
+    <p>貢献度</p>
+    <p><%= "質問:#{@user.q_points.length} 回答:#{@user.a_points.length}" %></p>
     <% if @user.id === current_user.id %>
         <p><%= link_to '編集する', edit_user_registration_path %></p>
     <% end %>
