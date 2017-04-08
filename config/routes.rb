@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   }
 
   resources :questions do
-    resources :answers
+    resources :answers do
+      resources :contributes, only: [:create, :destroy]
+    end
+    resources :contributes, only: [:create, :destroy]
   end
 
   resources :users, only: [:index, :show] do

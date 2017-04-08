@@ -23,6 +23,10 @@ class QuestionsController < ApplicationController
       if !@favorite
         @favorite = @question.favorites.build
       end
+      @contributeQ = Contribute.find_by(user_id: current_user.id, point_q: @question.id)
+      if !@contributeQ
+        @contributeQ = @question.q_points.build
+      end
       @user = current_user
     end
   end
