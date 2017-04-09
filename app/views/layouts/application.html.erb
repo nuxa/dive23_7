@@ -40,12 +40,16 @@
   <div class="content-header">
     <div class="container">
       <div class="col-md-10 col-md-offset-1 col-sm-10">
-        <h1 class="page-title pull-left">diver stack <b>overflow</b></h1>
+        <h1 class="page-title pull-left">
+          <%= link_to root_path do %>
+              diver stack <b>overflow</b>
+          <% end %>
+        </h1>
         <ul class="nav nav-pills pull-right">
-          <li role="presentation" class="active"><a href="#">質問</a></li>
-          <li role="presentation"><%= link_to 'タグ', tag_index_path %></li>
-          <li role="presentation"><a href="#">ユーザー</a></li>
-          <li role="presentation"><a href="#">質問する</a></li>
+          <li role="presentation" <%= switch_active_class('questions', 'index') %>><%= link_to '質問', questions_path %></li>
+          <li role="presentation" <%= switch_active_class('tag', 'index') %>><%= link_to 'タグ', tag_index_path %></li>
+          <li role="presentation" <%= switch_active_class('users', 'index') %>><%= link_to 'ユーザー', users_path %></li>
+          <li role="presentation" <%= switch_active_class('questions', 'new') %>><%= link_to '質問する', new_question_path %></li>
         </ul>
       </div>
     </div>

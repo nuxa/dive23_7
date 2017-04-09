@@ -5,7 +5,7 @@
         <%= profile_img(user) %>
         <p><%= link_to user.name, user_path(user) %></p>
         <p><%= user.email %></p>
-        <% if user.id === current_user.id %>
+        <% if current_user && user.id === current_user.id %>
             <p><%= link_to '編集する', edit_user_registration_path %></p>
         <% end %>
       </div>

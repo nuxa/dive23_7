@@ -9,6 +9,12 @@ module ApplicationHelper
     end
     image_tag(img_url, alt: user.name)
   end
+
+  def switch_active_class(c_name, a_name = '')
+    if c_name === controller.controller_name && a_name === controller.action_name
+      'class=active'
+    end
+  end
 end
 
 module ActionView
