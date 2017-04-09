@@ -6,19 +6,20 @@
       <span class="btn btn-primary"><%= @tag %></span>
   <% end %>
 
-  <% @questions.each do |question| %>
-      <h2><%= link_to question.title, question %></h2>
-      <div>
-        <p class="text-left"><%= question.content %></p>
-        <%= render 'questions/tag_list', tag_list: question.tag_list %></td>
-        <div class="text-right">
-          <p>asked <%= question.created_at.strftime("%Y年 %m月 %d日, %H:%M:%S") %></p>
-          <p><%= link_to question.user.name, user_path(question.user) %></p>
-        </div>
-      </div>
-  <% end %>
-
-  <br>
-
-  <%= link_to 'New Question', new_question_path %>
+  <ul class="question-list">
+    <% @questions.each do |question| %>
+        <li>
+          <h2><%= link_to question.title, question %></h2>
+          <div>
+            <p class="text-left"><%= question.q_points.length %>票　<%= question.answers.length %>回答</p>
+            <p class="text-left"><%= question.content %></p>
+            <%= render 'questions/tag_list', tag_list: question.tag_list %></td>
+            <div class="text-right">
+              <p>asked <%= question.created_at.strftime("%Y年 %m月 %d日, %H:%M:%S") %></p>
+              <p><%= link_to question.user.name, user_path(question.user) %></p>
+            </div>
+          </div>
+        </li>
+    <% end %>
+  </ul>
 </div>
