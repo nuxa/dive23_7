@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
+# User
 50.times do |n|
   email = Faker::Internet.email
   name = Faker::Name.name
@@ -45,6 +47,20 @@ fileT.close
 end
 
 fileQ.close
+
+
+# Answer
+100.times do |n|
+  content = Faker::Lorem.paragraphs.join
+  user_id = Faker::Number.between(1, User.count)
+  question_id = Faker::Number.between(1, Question.count)
+  Answer.create!(
+      content: content,
+      user_id: user_id,
+      question_id: question_id
+  )
+end
+
 
 # Favorite(1人のUserあたり最大15件のお気に入り)
 (User.count).times do |n|
