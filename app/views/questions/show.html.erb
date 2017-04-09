@@ -20,6 +20,21 @@
   <%= link_to 'Edit', edit_question_path(@question) %> |
   <%= link_to 'Back', questions_path %>
 
+<div id="contribute_area" class="text-left">
+<% if user_signed_in? %>
+  <% if !@contributeQ.user_id %>
+    <!-- 未投票 -->
+    <%= render partial: 'contributes/question/create_form', locals: { question: @question } %>
+  <% else %>
+    <!-- 投票済み -->
+    <%= render partial: 'contributes/question/delete_form', locals: { question: @question } %>
+  <% end %>
+<% else %>
+<!-- 未ログイン(ボタンなし) -->
+<p><%= "#{@question.q_points.length-1}人がこの質問が役に立ったと考えています" %></p>
+<% end %>
+</div>
+
   <p>回答一覧</p>
   <div id="answers_area">
     <%= render partial: 'answers/index', locals: {answers: @answers, question: @question} %>
