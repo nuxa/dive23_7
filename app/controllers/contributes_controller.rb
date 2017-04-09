@@ -12,12 +12,12 @@ class ContributesController < ApplicationController
       @answer    = Answer.find(params[:answer_id])
       @a_points    = @answer.a_points
       @contributeA = @answer.a_points.build
-      @contribute.user_id = current_user.id
+      @contributeA.user_id = current_user.id
     end
 
     # クライアント要求に応じてフォーマットを変更
     respond_to do |format|
-      if @contributeQ.save || @contributeA.save
+      if (@contributeQ && @contributeQ.save) || ( (@contributeA && @contributeA.save))
         format.html { redirect_to question_path(@question)}
         format.json { render :show, status: :created, location: @question }
         # JS形式でレスポンスを返します。

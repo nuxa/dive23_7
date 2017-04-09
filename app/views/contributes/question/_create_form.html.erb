@@ -1,4 +1,4 @@
 <%= form_for([@question], url: question_contributes_path(@question), html: {method: "post"}) do |f| %>
-    <p><%= "#{@question.q_points.length-1}人がこれが役に立ったと考えています" %></p>
+    <p><%= "#{@question.q_points.length-1}人がこの質問が役に立ったと考えています" %></p>
     <%= f.submit("投票する") %>
 <% end %>

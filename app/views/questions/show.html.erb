@@ -20,7 +20,7 @@
   <%= link_to 'Edit', edit_question_path(@question) %> |
   <%= link_to 'Back', questions_path %>
 
-<div id="contribute_area">
+<div id="contribute_area" class="text-left">
 <% if user_signed_in? %>
   <% if !@contributeQ.user_id %>
     <!-- 未投票 -->
@@ -31,7 +31,7 @@
   <% end %>
 <% else %>
 <!-- 未ログイン(ボタンなし) -->
-<p><%= "#{@question.q_points.length-1}人がこれが役に立ったと考えています" %></p>
+<p><%= "#{@question.q_points.length-1}人がこの質問が役に立ったと考えています" %></p>
 <% end %>
 </div>
 

@@ -13,6 +13,21 @@
               <p>answered <%= answer.created_at.strftime("%Y年 %m月 %d日, %H:%M:%S") %></p>
               <p><%= answer.user.name %></p>
             </div>
+            <div id="contribute_area" class="text-left">
+            <% if user_signed_in? %>
+              <% if !(getContributeA(answer).user_id) %>
+                <!-- 未投票 -->
+                <%= render partial: 'contributes/answer/create_form', locals: { question: question, answer: answer } %>
+              <% else %>
+                <!-- 投票済み -->
+                <%= render partial: 'contributes/answer/delete_form', locals: { question: question, answer: answer, contribute: getContributeA(answer) } %>
+              <% end %>
+            <% else %>
+            <!-- 未ログイン(ボタンなし) -->
+            <p><%= "#{answer.a_points.length}人がこの回答が役に立ったと考えています" %></p>
+            <% end %>
+            </div>
+
           </li>
       <% end %>
   <% end %>
