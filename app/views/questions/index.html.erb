@@ -1,31 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<h1>Listing Questions</h1>
-<% if @tag %>
-<span class="btn btn-primary"><%= @tag %></span>
-<% end %>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <h1>Listing Questions</h1>
+  <% if @tag %>
+      <span class="btn btn-primary"><%= @tag %></span>
+  <% end %>
 
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.title %></td>
-        <td><%= question.content %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% @questions.each do |question| %>
+      <h2><%= link_to question.title, question %></h2>
+      <div>
+        <p class="text-left"><%= question.content %></p>
+        <%= render 'questions/tag_list', tag_list: question.tag_list %></td>
+        <div class="text-right">
+          <p>asked <%= question.created_at.strftime("%Y年 %m月 %d日, %H:%M:%S") %></p>
+          <p><%= link_to question.user.name, user_path(question.user) %></p>
+        </div>
+      </div>
+  <% end %>
 
-<br>
+  <br>
 
-<%= link_to 'New Question', new_question_path %>
+  <%= link_to 'New Question', new_question_path %>
+</div>
