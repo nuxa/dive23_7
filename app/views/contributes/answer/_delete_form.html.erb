@@ -1,0 +1,4 @@
+<%= form_for([question, answer, contribute], html: {method: "delete"}) do |f| %>
+    <p><%= "#{answer.a_points.length}人がこの回答が役に立ったと考えています" %></p>
+    <%= f.submit("投票を取消") %>
+<% end %>
