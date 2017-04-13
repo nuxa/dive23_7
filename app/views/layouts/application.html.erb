@@ -3,7 +3,7 @@
 <head>
   <title>Dive23/7</title>
   <%= include_gon(:init => true) %>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
@@ -40,12 +40,20 @@
   <div class="content-header">
     <div class="container">
       <div class="col-md-10 col-md-offset-1 col-sm-10">
-        <h1 class="page-title pull-left">diver stack <b>overflow</b></h1>
+        <h1 class="page-title pull-left">
+          <%= link_to root_path do %>
+              diver stack <b>overflow</b>
+          <% end %>
+        </h1>
         <ul class="nav nav-pills pull-right">
-          <li role="presentation" class="active"><a href="#">質問</a></li>
-          <li role="presentation"><%= link_to 'タグ', tag_index_path %></li>
-          <li role="presentation"><a href="#">ユーザー</a></li>
-          <li role="presentation"><a href="#">質問する</a></li>
+          <li role="presentation" <%= switch_active_class('questions', 'index') %>><%= link_to '質問', questions_path %></li>
+          <li role="presentation" <%= switch_active_class('tag') %>><%= link_to 'タグ', tag_index_path %></li>
+          <li role="presentation" <%= switch_active_class('ranks') %>><%= link_to 'ランキング', ranks_path %></li>
+          <li role="presentation" <%= switch_active_class('users') %>><%= link_to 'ユーザー', users_path %></li>
+          <% if user_signed_in? %>
+              <li role="presentation" <%= switch_active_class('favorites') %>><%= link_to 'お気に入り', user_favorites_path(current_user.id) %></li>
+              <li role="presentation" <%= switch_active_class('questions', 'new') %>><%= link_to '質問する', new_question_path %></li>
+          <% end %>
         </ul>
       </div>
     </div>
