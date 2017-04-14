@@ -17,6 +17,7 @@ html {
 
 body {
   margin: 0;
+  word-break: break-all;
 }
 
 /* HTML5 display definitions

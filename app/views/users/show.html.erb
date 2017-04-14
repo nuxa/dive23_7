@@ -4,9 +4,41 @@
   <p><%= @user.name %></p>
   <p><%= @user.profile %></p>
   <p><%= @user.email %></p>
+
   <p>貢献度</p>
   <p><%= "質問:#{@user.q_points.length} 回答:#{@user.a_points.length}" %></p>
   <% if current_user && @user.id === current_user.id %>
       <p><%= link_to '編集する', edit_user_registration_path %></p>
   <% end %>
+
+  <h3><%= @user.name %>さんの質問</h3>
+  <ul class="myPage-list">
+    <% unless @questions.empty? %>
+        <% @questions.each do |question| %>
+            <li>
+              <h4 class="text-left"><%= question.q_points.length %>
+                票 <%= link_to question.title, question_path(question.id) %></h4>
+              <p class="text-right"><%= question.created_at.strftime("%Y年 %m月 %d日, %H:%M:%S") %></p>
+            </li>
+        <% end %>
+    <% else %>
+        <p class="text-center"><%= @user.name %>さんの質問はありません</p>
+    <% end %>
+  </ul>
+
+  <h3><%= @user.name %>さんの回答</h3>
+  <ul class="myPage-list">
+    <% unless @answers.empty? %>
+        <% @answers.each do |answer| %>
+            <li>
+              <h4 class="text-left"><%= link_to answer.question.title, question_path(answer.question.id, anchor: answer.id) %></h4>
+              <p class="text-left">answer.content</p>
+              <p class="text-right"><%= answer.created_at.strftime("%Y年 %m月 %d日, %H:%M:%S") %></p>
+            </li>
+        <% end %>
+    <% else %>
+        <p class="text-center"><%= @user.name %>さんの回答はありません</p>
+    <% end %>
+  </ul>
+
 </div>
