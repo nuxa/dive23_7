@@ -1,7 +1,7 @@
 <ul class="answer-list">
   <% answers.each do |answer| %>
       <% unless answer.id.nil? %>
-          <li>
+          <li id="<%= answer.id %>">
             <p class="text-left"><%= answer.content %></p>
             <% if user_signed_in? && current_user.id == answer.user.id %>
                 <p class="text-right">
