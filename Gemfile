@@ -25,6 +25,7 @@ gem 'rb-readline'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'jquery-ui-rails'
 gem 'gon'
+gem 'faker'
 
 group :development, :test do
   gem 'annotate'
@@ -35,7 +36,6 @@ group :development, :test do
   gem 'spring'
   gem "rspec-rails"
   gem "factory_girl_rails"
-  gem 'faker'
 end
 
 group :development do
