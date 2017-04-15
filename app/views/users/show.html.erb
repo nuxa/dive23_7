@@ -14,7 +14,7 @@
     <% unless @questions.empty? %>
         <% @questions.each do |question| %>
             <li>
-              <h5 class="text-left"><%= link_to question.title, question_path(question.id) %></h4>
+              <h4 class="text-left"><%= link_to question.title, question_path(question.id) %></h4>
               <p class="text-left"><%= "#{question.q_points.length}票" %></p>
               <p class ="text-right"><%= question.created_at.strftime("%Y年 %m月 %d日, %H:%M:%S") %></p>
             </li>
@@ -29,7 +29,7 @@
     <% unless @answers.empty? %>
         <% @answers.each do |answer| %>
             <li>
-              <h5 class="text-left"><%= link_to answer.content.truncate(200), question_path(answer.question.id, anchor: answer.id) %></h4>
+              <h4 class="text-left"><%= link_to answer.content.truncate(200), question_path(answer.question.id, anchor: answer.id) %></h4>
               <p class="text-left"><%= "#{answer.a_points.length}票" %></p>
               <p class="text-right"><%= answer.created_at.strftime("%Y年 %m月 %d日, %H:%M:%S") %></p>
             </li>
