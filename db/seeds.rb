@@ -44,21 +44,23 @@ fileT.close
   t_array = tagsArray.to_a.shuffle[0...tag_num]
   q.tag_list = t_array.join(',')
   q.save
-
-  # Answer(1つのQuestionあたり最大5件の回答)
-  ans_num = Faker::Number.between(0, 5)
-  ans_num.times do |n|
-    contentA = Faker::Lorem.paragraphs.join
-    user_id = Faker::Number.between(1, User.count)
-    Answer.create!(
-      content: contentA,
-      user_id: user_id,
-      question_id: q.id
-    )
-  end
 end
 
 fileQ.close
+
+
+# Answer
+100.times do |n|
+  content = Faker::Lorem.paragraphs.join
+  user_id = Faker::Number.between(1, User.count)
+  question_id = Faker::Number.between(1, Question.count)
+  Answer.create!(
+      content: content,
+      user_id: user_id,
+      question_id: question_id
+  )
+end
+
 
 # Favorite(1人のUserあたり最大15件のお気に入り)
 (User.count).times do |n|

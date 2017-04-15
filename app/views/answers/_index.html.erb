@@ -11,7 +11,7 @@
             <% end %>
             <div class="text-right">
               <p>answered <%= answer.created_at.strftime("%Y年 %m月 %d日, %H:%M:%S") %></p>
-              <p><%= link_to answer.user.name, user_path(answer.user) %></p>
+              <p><%= answer.user.name %></p>
             </div>
             <div id="contribute_area" class="text-left">
             <% if user_signed_in? %>
