@@ -4,7 +4,7 @@ class RanksController < ApplicationController
     @questions = []
     # 上位20位
     for num in 0...20 do
-      @questions.push(Question.find(@ranks[num][0]))
+      @questions.push(Question.find(@ranks[num][0])) if @ranks[num]
     end
   end
 end
