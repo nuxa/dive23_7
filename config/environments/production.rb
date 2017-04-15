@@ -13,7 +13,7 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: '自分のHerokuアプリのドメイン' }
+  config.action_mailer.default_url_options = { host: 'https://lit-waters-63640.herokuapp.com' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings =
       {
