@@ -20,8 +20,7 @@
 
   <div class="text-right">
     <p>asked <%= @question.created_at.strftime("%Y年 %m月 %d日, %H:%M:%S") %></p>
-    <p><%= link_to @question.user.name, user_path(@question.user) %></p>
-
+    <p><%= @question.user.name %></p>
   </div>
 
 <div id="contribute_area" class="text-left">
